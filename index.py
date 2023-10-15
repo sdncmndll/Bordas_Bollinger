@@ -93,6 +93,7 @@ def prepare_history_visualization():
         df_div=df_div[df_div['Dividends']>0]
         df_div.insert(3,"DY(%)",round((df_div['Dividends']/df_div['Close'])*100,2))
         st.dataframe(df_div)
+        teste
 
 if ticker and sleep_time:
     col1, col2, col3, col4 = st.columns(4)
