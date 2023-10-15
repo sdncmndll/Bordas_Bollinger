@@ -1,14 +1,16 @@
 import plotly.graph_objects as go
 
+#Criação da função para criar a figura do Gráfico
 def get(ticker, df):
     fig = go.Figure()
+    #Cria linha lower
     fig.add_trace(go.Scatter(
         x=df.index,
         y=df['Lower Band'],
         name="Low Band",
         line_color='rgba(0,184,148,0.3)'
     ))
-
+    #Cria linha upper
     fig.add_trace(go.Scatter(
         x=df.index,
         y=df['Upper Band'],
@@ -17,7 +19,7 @@ def get(ticker, df):
         fillcolor='rgba(173, 204, 255, 0.05)',
         line_color='rgba(0,184,148,0.3)',
     ))
-
+    #Cria candelstic das ações diárias
     fig.add_trace(go.Candlestick(
         x=df.index,
         open=df['Open'],
@@ -30,12 +32,14 @@ def get(ticker, df):
         increasing_fillcolor='rgba(0,184,148,0.7)',
         decreasing_fillcolor='rgba(225,112,85,0.7)',
     ))
+    #Cria a linha da média móvel
     fig.add_trace(go.Scatter(
         x=df.index,
         y=df['Moving Average'],
         name='Moving Avg',
         line_color='rgba(253,203,110,0.5)',
     ))
+    #Marca quando a ação ultrapassa a linha upper (Venda)
     fig.add_trace(go.Scatter(
         x=df.index,
         y=df['Purchase'],
@@ -47,7 +51,7 @@ def get(ticker, df):
             symbol='x',
         ),
     ))
-
+    #Marca quando a ação passa a linha lower (Compra)
     fig.add_trace(go.Scatter(
         x=df.index,
         y=df['Sell'],
@@ -59,7 +63,7 @@ def get(ticker, df):
             symbol='cross',
         )
     ))
-
+    #Ajustes no layout do gráfico
     fig.update_layout(
         title=f'Bollinger Bands - ({ticker})',
         plot_bgcolor='rgba(0,0,0,0)',
