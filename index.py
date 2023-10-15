@@ -7,6 +7,7 @@ import bollinger_bands as bollinger
 import pandas as pd
 #https://www.youtube.com/watch?v=PZhnF6e4jJQ, sobre o github
 
+#Biblioteca usada para retornar o nome dos tickers das ações
 tickers = inv.get_stocks_list("brazil")
 
 
