@@ -5,6 +5,7 @@ import datetime
 import history as hist
 import bollinger_bands as bollinger
 import pandas as pd
+#https://www.youtube.com/watch?v=PZhnF6e4jJQ, sobre o github
 
 tickers = inv.get_stocks_list("brazil")
 
